@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spin test</title>
+  <style type="text/css">
+    #exterior {
+      width: 1093px;
+      height: 615px;
+      position: absolute;
+      z-index: -100;
+    }
+    #interior {
+      width: 1093px;
+      height: 615px;
+      position: absolute;
+      z-index: -100;
+    }
+    p.text {
+      position: absolute;
+      top: 615px;
+    }
+  </style>
+  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+
+  <script type="text/javascript">
+    document.showExterior = true;
+    function toggleInteriorExterior() {
+      if (document.showExterior) {
+        exterior = document.getElementById('exterior')
+        exterior.style.display = 'none'
+        interior = document.getElementById('interior')
+        interior.style.display = 'block'
+        toggleButton = document.getElementById('toggle')
+        toggleButton.innerHTML = 'Hinausgehen'
+        document.showExterior = false;
+      } else {
+        exterior = document.getElementById('exterior')
+        exterior.style.display = 'block'
+        interior = document.getElementById('interior')
+        interior.style.display = 'none'
+        toggleButton = document.getElementById('toggle')
+        toggleButton.innerHTML = 'Hineingehen'
+        document.showExterior = true;
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id='interior' class='canvas'>
+    <a-scene embedded>
+      <a-sky src="interior-stereo.jpg" rotation="0 -90 0"></a-sky>
+    </a-scene>
+  </div>
+
+  <div id='exterior' class='canvas'>
+    <div
+        class="cloudimage-360"
+        data-folder="https://static.instavid360.com/spins/15585149795117_c6df2c45be4d92f1cb794daa43a1932c9e1ed1dadb97c6ef3/360/"
+        data-filename="{index}.jpg"
+        data-amount="200"
+        data-bottom-circle='true'
+        data-drag-speed='400'
+        data-spin-reverse='true'
+        data-lazyload='true'
+    ></div>
+  </div>
+
+  <p class="text">
+    Compare this to the standard 360 for <a href="https://www.carforyou.ch/de/auto/saloon/opel/adam/1.4i%20eFLEX%20Unlimited-162801">the same listing</a>.
+  </p>
+  <button id='toggle' type="button" onclick="toggleInteriorExterior()">Hineingehen</button>
+
+  <script src="https://cdn.scaleflex.it/filerobot/js-cloudimage-360-view/v2.0.4.min.js"></script>
+  <script src="https://cdn.scaleflex.it/filerobot/js-cloudimage-responsive/lazysizes.min.js?v4.1.6"></script>
+</body>
+</html>
